@@ -1,8 +1,7 @@
-# laravel-file-manager (Frontend)
+# laravel-file-manager (Vuejs with Element design)
 
-> File manager for Laravel - Frontend - Vue.js 
+this repo is foked from https://github.com/alexusmai/vue-laravel-file-manager the purpose is replace bootstrap design with element design
 
-> Backend - Laravel 5 package - [alexusmai/laravel-file-manager](https://github.com/alexusmai/laravel-file-manager)
 
 ![Laravel File Manager](https://raw.github.com/alexusmai/vue-laravel-file-manager/master/src/assets/laravel-file-manager.gif?raw=true)
 
@@ -15,7 +14,7 @@ Now you can overwrite default settings using props
 
 ### NPM
 ```
-$ npm install laravel-file-manager --save
+$ npm install laravel-file-manager-element --save
 ```
 
 ## Usage
