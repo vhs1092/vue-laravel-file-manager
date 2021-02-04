@@ -25,7 +25,7 @@
         </div>
         <div class="col-auto text-right">
             <span v-show="loadingSpinner">
-                <i class="fas fa-spinner fa-pulse"/>
+                <i class="far fa-spinner fa-pulse"/>
             </span>
             <span v-show="clipboardType"
                   v-on:click="showModal('Clipboard')"
@@ -35,7 +35,7 @@
             <span v-on:click="showModal('Status')"
                   v-bind:class="[hasErrors ? 'text-danger' : 'text-success']"
                   v-bind:title="lang.modal.status.title">
-                <i class="fas fa-info-circle"/>
+                <i class="far fa-info-circle"/>
             </span>
         </div>
     </div>

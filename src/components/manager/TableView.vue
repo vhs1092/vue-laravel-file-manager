@@ -6,36 +6,36 @@
                     <th class="w-65" v-on:click="sortBy('name')">
                         {{ lang.manager.table.name }}
                         <template v-if="sortSettings.field === 'name'">
-                            <i class="fas fa-sort-amount-down"
+                            <i class="far fa-sort-amount-down"
                                v-show="sortSettings.direction === 'down'"/>
-                            <i class="fas fa-sort-amount-up"
+                            <i class="far fa-sort-amount-up"
                                v-show="sortSettings.direction === 'up'"/>
                         </template>
                     </th>
                     <th class="w-10" v-on:click="sortBy('size')">
                         {{ lang.manager.table.size }}
                         <template v-if="sortSettings.field === 'size'">
-                            <i class="fas fa-sort-amount-down"
+                            <i class="far fa-sort-amount-down"
                                v-show="sortSettings.direction === 'down'"/>
-                            <i class="fas fa-sort-amount-up"
+                            <i class="far fa-sort-amount-up"
                                v-show="sortSettings.direction === 'up'"/>
                         </template>
                     </th>
                     <th class="w-10" v-on:click="sortBy('type')">
                         {{ lang.manager.table.type }}
                         <template v-if="sortSettings.field === 'type'">
-                            <i class="fas fa-sort-amount-down"
+                            <i class="far fa-sort-amount-down"
                                v-show="sortSettings.direction === 'down'"/>
-                            <i class="fas fa-sort-amount-up"
+                            <i class="far fa-sort-amount-up"
                                v-show="sortSettings.direction === 'up'"/>
                         </template>
                     </th>
                     <th class="w-auto" v-on:click="sortBy('date')">
                         {{ lang.manager.table.date }}
                         <template v-if="sortSettings.field === 'date'">
-                            <i class="fas fa-sort-amount-down"
+                            <i class="far fa-sort-amount-down"
                                v-show="sortSettings.direction === 'down'"/>
-                            <i class="fas fa-sort-amount-up"
+                            <i class="far fa-sort-amount-up"
                                v-show="sortSettings.direction === 'up'"/>
                         </template>
                     </th>
@@ -44,7 +44,7 @@
             <tbody>
                 <tr v-if="!isRootPath">
                     <td colspan="4" class="fm-content-item" v-on:click="levelUp">
-                        <i class="fas fa-level-up-alt"/>
+                        <i class="far fa-level-up-alt"/>
                     </td>
                 </tr>
                 <tr v-for="(directory, index) in directories"
@@ -164,6 +164,9 @@ export default {
 
         .text-hidden {
             color: #cdcdcd;
+        }
+        .table-info{
+                background-color: #bee5eb;
         }
     }
 </style>

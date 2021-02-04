@@ -14,7 +14,7 @@
                     ? 'fa-minus-square'
                     : 'fa-plus-square'
                    ]"/>
-                <i class="fas fa-minus fa-xs" v-else/>
+                <i class="far fa-minus fa-xs" v-else/>
                 {{ directory.basename }}
             </p>
 
@@ -92,6 +92,9 @@ export default {
 </script>
 
 <style lang="scss">
+  .list-unstyled{
+    list-style: none;
+  }
     .fm-tree-branch {
         display: table;
         width: 100%;
@@ -109,7 +112,7 @@ export default {
             }
         }
 
-        .fas.fa-minus{
+        .far.fa-minus{
             padding-left: 0.1rem;
             padding-right: 0.6rem;
         }

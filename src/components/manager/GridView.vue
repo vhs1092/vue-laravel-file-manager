@@ -3,7 +3,7 @@
         <div class="d-flex align-content-start flex-wrap">
             <div v-if="!isRootPath" v-on:click="levelUp" class="fm-grid-item text-center" >
                 <div class="fm-item-icon">
-                    <i class="fas fa-level-up-alt fa-5x pb-2"/>
+                    <i class="far fa-level-up-alt fa-5x pb-2"/>
                 </div>
                 <div class="fm-item-info"><strong>..</strong></div>
             </div>
@@ -18,7 +18,7 @@
                  v-on:contextmenu.prevent="contextMenu(directory, $event)">
                 <div class="fm-item-icon">
                     <i class="fa-5x pb-2"
-                       v-bind:class="(acl && directory.acl === 0) ? 'fas fa-unlock-alt' : 'far fa-folder'"/>
+                       v-bind:class="(acl && directory.acl === 0) ? 'far fa-unlock-alt' : 'far fa-folder'"/>
                 </div>
                 <div class="fm-item-info">{{ directory.basename }}</div>
             </div>
@@ -32,7 +32,7 @@
                  v-on:dblclick="selectAction(file.path, file.extension)"
                  v-on:contextmenu.prevent="contextMenu(file, $event)">
                 <div class="fm-item-icon">
-                    <i v-if="acl && file.acl === 0" class="fas fa-unlock-alt fa-5x pb-2"/>
+                    <i v-if="acl && file.acl === 0" class="far fa-unlock-alt fa-5x pb-2"/>
                     <thumbnail v-else-if="thisImage(file.extension)"
                                v-bind:disk="disk"
                                v-bind:file="file">

@@ -1,13 +1,16 @@
 <template>
     <transition name="fm-modal">
-        <div class="fm-modal" ref="fmModal" v-on:click="hideModal">
+        
+        <component v-if="showModal" :showModal="showModal" @hideModal="hideModal" v-bind:is="modalName"/>
+
+        <!--div class="fm-modal" ref="fmModal" v-on:click="hideModal">
             <div class="modal-dialog"
-                 role="document"
-                 v-bind:class="modalSize"
-                 v-on:click.stop>
+                role="document"
+                v-bind:class="modalSize"
+                v-on:click.stop>
                 <component v-bind:is="modalName"/>
             </div>
-        </div>
+        </div-->
     </transition>
 </template>
 
@@ -47,9 +50,15 @@ export default {
     Unzip,
     About,
   },
+  data() {
+    return {
+      showModal: false,
+    };
+  },
   mounted() {
     // set height
-    this.$store.commit('fm/modal/setModalBlockHeight', this.$refs.fmModal.offsetHeight);
+    //this.$store.commit('fm/modal/setModalBlockHeight', this.$refs.fmModal.offsetHeight);
+    this.showModal = true;
   },
   computed: {
     /**
@@ -93,7 +102,7 @@ export default {
         left: 0;
         right: 0;
         width: 100%;
-        height: 100%;
+        height: 100vh;
         background-color: rgba(0, 0, 0, .35);
         display: block;
         transition: opacity .4s ease;

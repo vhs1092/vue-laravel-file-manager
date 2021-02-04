@@ -1,116 +1,117 @@
 <template>
     <div class="fm-navbar mb-3">
-        <div class="row justify-content-between">
-            <div class="col-auto">
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-secondary"
+        <el-row>
+            <el-col :span="12">
+                <el-button-group>
+                    <el-button type="primary"
                             v-bind:disabled="backDisabled"
                             v-bind:title="lang.btn.back"
                             v-on:click="historyBack()">
-                        <i class="fas fa-step-backward"/>
-                    </button>
-                    <button type="button" class="btn btn-secondary"
+                        <i class="far fa-step-backward"/>
+                    </el-button>
+                    
+                    <el-button type="primary"
                             v-bind:disabled="forwardDisabled"
                             v-bind:title="lang.btn.forward"
                             v-on:click="historyForward()">
-                        <i class="fas fa-step-forward"/>
-                    </button>
-                    <button type="button" class="btn btn-secondary"
+                        <i class="far fa-step-forward"/>
+                    </el-button>
+                    <el-button type="primary"
                             v-on:click="refreshAll()"
                             v-bind:title="lang.btn.refresh">
-                        <i class="fas fa-sync-alt"/>
-                    </button>
-                </div>
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-secondary"
+                        <i class="far fa-sync-alt"/>
+                    </el-button>
+                </el-button-group>
+                <el-button-group>
+                    <el-button type="primary"
                             v-on:click="showModal('NewFile')"
                             v-bind:title="lang.btn.file">
                         <i class="far fa-file"/>
-                    </button>
-                    <button type="button" class="btn btn-secondary"
+                    </el-button>
+                    <el-button type="primary"
                             v-on:click="showModal('NewFolder')"
                             v-bind:title="lang.btn.folder">
                         <i class="far fa-folder"/>
-                    </button>
-                    <button type="button" class="btn btn-secondary"
+                    </el-button>
+                    <el-button type="primary"
                             disabled
                             v-if="uploading"
                             v-bind:title="lang.btn.upload">
-                        <i class="fas fa-upload"/>
-                    </button>
-                    <button type="button" class="btn btn-secondary"
+                        <i class="far fa-upload"/>
+                    </el-button>
+                    <el-button type="primary"
                             v-else
                             v-on:click="showModal('Upload')"
                             v-bind:title="lang.btn.upload">
-                        <i class="fas fa-upload"/>
-                    </button>
-                    <button type="button" class="btn btn-secondary"
+                        <i class="far fa-upload"/>
+                    </el-button>
+                    <el-button type="primary"
                             v-bind:disabled="!isAnyItemSelected"
                             v-on:click="showModal('Delete')"
                             v-bind:title="lang.btn.delete">
-                        <i class="fas fa-trash-alt"/>
-                    </button>
-                </div>
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-secondary"
+                        <i class="far fa-trash-alt"/>
+                    </el-button>
+                </el-button-group>
+                <el-button-group>
+                    <el-button type="primary"
                             v-bind:disabled="!isAnyItemSelected"
                             v-bind:title="lang.btn.copy"
                             v-on:click="toClipboard('copy')">
-                        <i class="fas fa-copy"/>
-                    </button>
-                    <button type="button" class="btn btn-secondary"
+                        <i class="far fa-copy"/>
+                    </el-button>
+                    <el-button type="primary"
                             v-bind:disabled="!isAnyItemSelected"
                             v-bind:title="lang.btn.cut"
                             v-on:click="toClipboard('cut')">
-                        <i class="fas fa-cut"/>
-                    </button>
-                    <button type="button" class="btn btn-secondary"
+                        <i class="far fa-cut"/>
+                    </el-button>
+                    <el-button type="primary"
                             v-bind:disabled="!clipboardType"
                             v-bind:title="lang.btn.paste"
                             v-on:click="paste">
-                        <i class="fas fa-paste"/>
-                    </button>
-                </div>
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-secondary"
+                        <i class="far fa-paste"/>
+                    </el-button>
+                </el-button-group>
+                <el-button-group>
+                    <el-button type="primary"
                             v-bind:title="lang.btn.hidden"
                             v-on:click="toggleHidden">
-                        <i class="fas" v-bind:class="[hiddenFiles ? 'fa-eye': 'fa-eye-slash']"/>
-                    </button>
-                </div>
-            </div>
-            <div class="col-auto text-right">
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-secondary"
+                        <i class="far" v-bind:class="[hiddenFiles ? 'fa-eye': 'fa-eye-slash']"/>
+                    </el-button>
+                </el-button-group>
+            </el-col>
+            <el-col :span="12" style="text-align:end">
+                <el-button-group>
+                    <el-button type="primary"
                             v-bind:class="[viewType === 'table' ? 'active' : '']"
                             v-on:click="selectView('table')"
                             v-bind:title="lang.btn.table">
-                        <i class="fas fa-th-list"/>
-                    </button>
-                    <button role="button" class="btn btn-secondary"
+                        <i class="far fa-th-list"/>
+                    </el-button>
+                    <el-button role="button" type="primary"
                             v-bind:class="[viewType === 'grid' ? 'active' : '']"
                             v-on:click="selectView('grid')"
                             v-bind:title="lang.btn.grid">
-                        <i class="fas fa-th"/>
-                    </button>
-                </div>
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-secondary"
+                        <i class="far fa-th"/>
+                    </el-button>
+                </el-button-group>
+                <el-button-group>
+                    <el-button type="primary"
                             v-bind:title="lang.btn.fullScreen"
                             v-bind:class="{ active: fullScreen }"
                             v-on:click="screenToggle">
-                        <i class="fas fa-expand-arrows-alt"/>
-                    </button>
-                </div>
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-secondary"
+                        <i class="far fa-expand-arrows-alt"/>
+                    </el-button>
+                </el-button-group>
+                <el-button-group>
+                    <el-button type="primary"
                             v-bind:title="lang.btn.about"
                             v-on:click="showModal('About')">
-                        <i class="fas fa-question"/>
-                    </button>
-                </div>
-            </div>
-        </div>
+                        <i class="far fa-question"/>
+                    </el-button>
+                </el-button-group>
+            </el-col>
+        </el-row>
     </div>
 </template>
 
@@ -306,7 +307,8 @@ export default {
 
 <style lang="scss">
     .fm-navbar {
-
+        margin-bottom: 20px;
+        
         .btn-group {
             margin-right: 0.4rem;
         }

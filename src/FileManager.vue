@@ -10,8 +10,14 @@
         <left-manager class="col" manager="left"/>
       </template>
       <template v-else-if="windowsConfig === 2">
-        <folder-tree class="col-4 col-md-3"/>
-        <left-manager class="col-8 col-md-9" manager="left"/>
+        <el-row style="width:100%">
+          <el-col :span="6">
+        <folder-tree/>
+          </el-col>
+          <el-col :span="18">
+        <left-manager manager="left"/>
+          </el-col>
+        </el-row>
       </template>
       <template v-else-if="windowsConfig === 3">
         <left-manager class="col-12 col-sm-6"

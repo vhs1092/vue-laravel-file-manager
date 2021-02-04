@@ -1,6 +1,18 @@
 <template>
     <div class="fm-breadcrumb">
-        <nav aria-label="breadcrumb">
+      <el-breadcrumb separator-class="el-icon-arrow-right">
+        <el-breadcrumb-item v-on:click="selectMainDirectory"><span class="badge badge-secondary">
+                        <i class="far fa-hdd"/>
+                    </span></el-breadcrumb-item>
+        <el-breadcrumb-item v-for="(item, index) in breadcrumb"
+                    v-bind:key="index"
+                    v-bind:class="[breadcrumb.length === index + 1 ? 'active' : '']"
+                    v-on:click="selectDirectory(index)">
+                    <span>{{ item }}</span>
+                    </el-breadcrumb-item>
+      </el-breadcrumb>
+
+        <!--nav aria-label="breadcrumb">
             <ol class="breadcrumb"
                 v-bind:class="[manager === activeManager ? 'active-manager' : 'bg-light']">
                 <li class="breadcrumb-item" v-on:click="selectMainDirectory">
@@ -16,7 +28,7 @@
                     <span>{{ item }}</span>
                 </li>
             </ol>
-        </nav>
+        </nav-->
     </div>
 </template>
 
