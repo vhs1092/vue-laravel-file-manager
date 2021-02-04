@@ -1,13 +1,13 @@
 {
-  "name": "laravel-file-manager",
+  "name": "laravel-file-manager-element",
   "version": "2.5.0",
-  "description": "File manager for Laravel",
+  "description": "File manager for Laravel with Vue.js and Element Style",
   "keywords": [
     "laravel",
     "file",
     "manager"
   ],
-  "author": "Aleksandr Manekin <alexusmai@gmail.com>",
+  "author": "Victor Samayoa <vhs1092@gmail.com>",
   "private": false,
   "license": "MIT",
   "main": "src/init.js",
