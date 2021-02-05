@@ -1,6 +1,6 @@
 <template>
     <div class="fm-grid">
-        <div class="d-flex align-content-start flex-wrap">
+        <div class="d-flex align-content-start flex-wrap" style="display: flex; align-content: start; flex-wrap: wrap;">
             <div v-if="!isRootPath" v-on:click="levelUp" class="fm-grid-item text-center" >
                 <div class="fm-item-icon">
                     <i class="far fa-level-up-alt fa-5x pb-2"/>

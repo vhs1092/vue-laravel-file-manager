@@ -1,6 +1,6 @@
 {
   "name": "laravel-file-manager-element",
-  "version": "2.5.0",
+  "version": "2.5.1",
   "description": "File manager for Laravel with Vue.js and Element Style",
   "keywords": [
     "laravel",
@@ -11,6 +11,9 @@
   "private": false,
   "license": "MIT",
   "main": "src/init.js",
+  "repository": {
+    "url": "git@github.com:vhs1092/vue-laravel-file-manager.git"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",

@@ -3,6 +3,7 @@
         <table class="table table-sm">
             <thead>
                 <tr>
+                    <th class="w-auto" v-if="files.length > 0"></th>
                     <th class="w-65" v-on:click="sortBy('name')">
                         {{ lang.manager.table.name }}
                         <template v-if="sortSettings.field === 'name'">
@@ -42,6 +43,7 @@
                 </tr>
             </thead>
             <tbody>
+
                 <tr v-if="!isRootPath">
                     <td colspan="4" class="fm-content-item" v-on:click="levelUp">
                         <i class="far fa-level-up-alt"/>
@@ -69,6 +71,8 @@
                     v-on:click="selectItem('files', file.path, $event)"
                     v-on:dblclick="selectAction(file.path, file.extension)"
                     v-on:contextmenu.prevent="contextMenu(file, $event)">
+                    <td><el-checkbox @change.native="confirm_send_files(file)"
+                        align="center"></el-checkbox></td>
                     <td class="fm-content-item unselectable"
                         v-bind:class="(acl && file.acl === 0) ? 'text-hidden' : ''">
                         <i class="far" v-bind:class="extensionToIcon(file.extension)"/>
@@ -91,12 +95,12 @@
 import translate from '../../mixins/translate';
 import helper from '../../mixins/helper';
 import managerHelper from './mixins/manager';
-
+import EventBus from '../../eventBus';
 export default {
   name: 'table-view',
   mixins: [translate, helper, managerHelper],
-  props: {
-    manager: { type: String, required: true },
+  props:{
+    manager: { type: String, required: true }
   },
   computed: {
     /**
@@ -107,6 +111,12 @@ export default {
       return this.$store.state.fm[this.manager].sort;
     },
   },
+  data() {
+    return {
+        filesToSend:[],
+        filesToAttach:[]
+    };
+  },
   methods: {
     /**
      * Sort by field
@@ -115,6 +125,27 @@ export default {
     sortBy(field) {
       this.$store.dispatch(`fm/${this.manager}/sortBy`, { field, direction: null });
     },
+    /***
+     * Files to send through email
+     */
+    confirm_send_files(file){
+
+        const result = this.filesToSend.find( ({ file_path }) => file_path === file.path );
+        if(result !== undefined){
+            this.filesToSend = this.filesToSend.filter(function(el) { return el.file_path != file.path; });
+        }else{
+        
+            let data = {};
+            data.file_name = file.basename;
+            data.file_path = file.path;
+            data.url = file.path;
+            data.folder_and_file_path = file.path;
+            data.name = file.basename;
+            this.filesToSend.push(data);
+        }
+
+        this.$emit('attachFilesToEmail', this.filesToSend);
+    }
   },
 };
 </script>

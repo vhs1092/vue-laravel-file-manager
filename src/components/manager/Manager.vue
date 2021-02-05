@@ -3,7 +3,7 @@
         <!--disk-list v-bind:manager="manager"/-->
         <breadcrumb v-bind:manager="manager"/>
         <div class="fm-content-body">
-            <table-view v-if="viewType === 'table'" v-bind:manager="manager"/>
+            <table-view v-if="viewType === 'table'" @attachFilesToEmail="attachFilesToEmail" v-bind:manager="manager"/>
             <grid-view v-else v-bind:manager="manager"/>
         </div>
     </div>
@@ -25,7 +25,7 @@ export default {
     GridView,
   },
   props: {
-    manager: { type: String, required: true },
+    manager: { type: String, required: true }
   },
   computed: {
     /**
@@ -36,6 +36,11 @@ export default {
       return this.$store.state.fm[this.manager].viewType;
     },
   },
+  methods:{
+    attachFilesToEmail(data){
+      this.$emit('attachFilesToEmail', data);
+    }
+  }
 };
 </script>
 
