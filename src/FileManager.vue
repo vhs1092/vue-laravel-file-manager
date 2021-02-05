@@ -7,7 +7,7 @@
       <context-menu/>
       <modal v-if="showModal"/>
       <template v-if="windowsConfig === 1">
-        <left-manager class="col" manager="left"/>
+        <left-manager @attachFilesToEmail="attachFilesToEmail" class="col" manager="left"/>
       </template>
       <template v-else-if="windowsConfig === 2">
         <el-row style="width:100%">
@@ -15,17 +15,17 @@
         <folder-tree/>
           </el-col>
           <el-col :span="18">
-        <left-manager manager="left"/>
+        <left-manager @attachFilesToEmail="attachFilesToEmail" manager="left"/>
           </el-col>
         </el-row>
       </template>
       <template v-else-if="windowsConfig === 3">
-        <left-manager class="col-12 col-sm-6"
+        <left-manager @attachFilesToEmail="attachFilesToEmail" class="col-12 col-sm-6"
                       manager="left"
                       v-on:click.native="selectManager('left')"
                       v-on:contextmenu.native="selectManager('left')">
         </left-manager>
-        <right-manager class="col-12 col-sm-6"
+        <right-manager @attachFilesToEmail="attachFilesToEmail" class="col-12 col-sm-6"
                        manager="right"
                        v-on:click.native="selectManager('right')"
                        v-on:contextmenu.native="selectManager('right')">
@@ -222,6 +222,9 @@ export default {
         this.$store.commit('fm/setActiveManager', managerName);
       }
     },
+    attachFilesToEmail(data){
+      this.$emit('attachFilesToEmail', data);
+    }
   },
 };
 </script>
