@@ -1,10 +1,10 @@
 <template>
   <div class="fm d-flex flex-column"
        v-bind:class="{ 'fm-full-screen': fullScreen }">
-    <navbar/>
+    <navbar :showAdminButtons="settings.showAdminButtons" />
     <div class="fm-body">
       <notification/>
-      <context-menu/>
+      <context-menu v-if="settings.showAdminButtons"/>
       <modal v-if="showModal"/>
       <template v-if="windowsConfig === 1">
         <left-manager @attachFilesToEmail="attachFilesToEmail" class="col" manager="left"/>
@@ -76,7 +76,7 @@ export default {
       default() {
         return {};
       },
-    },
+    }
   },
   created() {
     // manual settings

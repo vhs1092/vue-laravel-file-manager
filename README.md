@@ -5,9 +5,9 @@ this repo is foked from https://github.com/alexusmai/vue-laravel-file-manager th
 
 ![Laravel File Manager](https://raw.github.com/alexusmai/vue-laravel-file-manager/master/src/assets/laravel-file-manager.gif?raw=true)
 
-# v 2.4.0
+# v 2.5.4
 
-Now you can overwrite default settings using props
+Now you can overwrite default settings using props and show or hide actions
 
 
 ## Installation
@@ -18,6 +18,17 @@ $ npm install laravel-file-manager-element --save
 ```
 
 ## Usage
+
+** To Show Admin Buttons (copy, paste, file upload, delete)
+Pass object settings with property settings for instance
+
+```
+<file-manager :settings="fileManagerSettings"></file-manager>
+
+fileManagerSettings: {
+            showAdminButtons: true
+},
+```
 
 **IF** your App using Vuex store
 

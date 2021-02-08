@@ -22,7 +22,7 @@
                         <i class="far fa-sync-alt"/>
                     </el-button>
                 </el-button-group>
-                <el-button-group>
+                <el-button-group v-if="showAdminButtons">
                     <el-button type="primary"
                             v-on:click="showModal('NewFile')"
                             v-bind:title="lang.btn.file">
@@ -52,7 +52,7 @@
                         <i class="far fa-trash-alt"/>
                     </el-button>
                 </el-button-group>
-                <el-button-group>
+                <el-button-group v-if="showAdminButtons">
                     <el-button type="primary"
                             v-bind:disabled="!isAnyItemSelected"
                             v-bind:title="lang.btn.copy"
@@ -72,7 +72,7 @@
                         <i class="far fa-paste"/>
                     </el-button>
                 </el-button-group>
-                <el-button-group>
+                <el-button-group v-if="showAdminButtons">
                     <el-button type="primary"
                             v-bind:title="lang.btn.hidden"
                             v-on:click="toggleHidden">
@@ -88,12 +88,12 @@
                             v-bind:title="lang.btn.table">
                         <i class="far fa-th-list"/>
                     </el-button>
-                    <el-button role="button" type="primary"
+                    <!--el-button role="button" type="primary"
                             v-bind:class="[viewType === 'grid' ? 'active' : '']"
                             v-on:click="selectView('grid')"
                             v-bind:title="lang.btn.grid">
                         <i class="far fa-th"/>
-                    </el-button>
+                    </el-button-->
                 </el-button-group>
                 <el-button-group>
                     <el-button type="primary"
@@ -103,13 +103,13 @@
                         <i class="far fa-expand-arrows-alt"/>
                     </el-button>
                 </el-button-group>
-                <el-button-group>
+                <!--el-button-group>
                     <el-button type="primary"
                             v-bind:title="lang.btn.about"
                             v-on:click="showModal('About')">
                         <i class="far fa-question"/>
                     </el-button>
-                </el-button-group>
+                </el-button-group-->
             </el-col>
         </el-row>
     </div>
@@ -121,6 +121,7 @@ import EventBus from '../../eventBus';
 
 export default {
   mixins: [translate],
+  props:['showAdminButtons'],
   computed: {
     /**
      * Active manager name
