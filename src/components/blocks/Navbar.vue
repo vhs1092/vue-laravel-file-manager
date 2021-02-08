@@ -81,20 +81,20 @@
                 </el-button-group>
             </el-col>
             <el-col :span="12" style="text-align:end">
-                <el-button-group>
+                <!--el-button-group>
                     <el-button type="primary"
                             v-bind:class="[viewType === 'table' ? 'active' : '']"
                             v-on:click="selectView('table')"
                             v-bind:title="lang.btn.table">
                         <i class="far fa-th-list"/>
                     </el-button>
-                    <!--el-button role="button" type="primary"
+                    <el-button role="button" type="primary"
                             v-bind:class="[viewType === 'grid' ? 'active' : '']"
                             v-on:click="selectView('grid')"
                             v-bind:title="lang.btn.grid">
                         <i class="far fa-th"/>
-                    </el-button-->
-                </el-button-group>
+                    </el-button>
+                </el-button-group-->
                 <el-button-group>
                     <el-button type="primary"
                             v-bind:title="lang.btn.fullScreen"
